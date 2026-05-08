@@ -13,3 +13,4 @@ IoT-PWR Docs documentation
    client_code
    client_api
    architecture
+   server

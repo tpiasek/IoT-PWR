@@ -86,9 +86,6 @@ def heartbeat_loop(sock):
 
     Args:
         sock (socket.socket): Communication socket.
-    
-    Returns:
-        ---
     """
     while True:
         try:
@@ -105,6 +102,12 @@ def heartbeat_loop(sock):
         time.sleep(HEARTBEAT_INTERVAL)
             
 def receive_loop(sock):
+    """
+    Check for messages from the server. Detect disconnect and received tasks. If task is detected then add it into device's task queue.
+
+    Args:
+        sock (socket.socket): Communication socket.
+    """
     while True:
         try:
             msg = recv_msg(sock)
@@ -120,6 +123,12 @@ def receive_loop(sock):
             break
 
 def make_client_socket() -> socket.socket:
+    """
+    Create client's socket for communication. Use TLS if available.
+
+    Returns:
+        socket.socket: Client's communication socket.
+    """
     raw = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     if USE_TLS:

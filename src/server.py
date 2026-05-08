@@ -55,6 +55,14 @@ def receive_loop(sock):
 # ── TLS / plain socket setup ──────────────────────────────────────────────────
 
 def make_server_socket() -> socket.socket:
+    """
+    Create server socket for communication with client.
+
+    Args:
+
+    Returns:
+        socket.socket
+    """
     raw = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     raw.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     raw.bind(("0.0.0.0", PORT))
